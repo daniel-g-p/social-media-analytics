@@ -8,7 +8,7 @@
          maxlength="50"
          v-model="username"
       />
-      <button class="search-form__button">
+      <button class="search-form__button" v-bind:disabled="buttonEnabled">
          Find {{ username }} {{ networkText }}
       </button>
    </form>
@@ -25,6 +25,9 @@ export default {
    computed: {
       networkText() {
          return this.network ? `on ${this.network}` : "";
+      },
+      buttonEnabled() {
+         return !this.username || !this.network;
       },
    },
 };
@@ -78,10 +81,15 @@ export default {
       letter-spacing: 0.1em;
       font-weight: 700;
       cursor: pointer;
-      transition: color 0.25s ease, background-color 0.25s ease;
+      transition: color 0.25s ease, background-color 0.25s ease,
+         opacity 0.25s ease;
       &:hover {
          background-color: $color-background-1;
          color: $color-body-1;
+      }
+      &:disabled {
+         pointer-events: none;
+         opacity: 0.5;
       }
    }
 }

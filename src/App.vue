@@ -4,6 +4,10 @@
    <section-template>
       <search-block></search-block>
    </section-template>
+   <block-separator></block-separator>
+   <section-template>
+      <result-block></result-block>
+   </section-template>
 </template>
 
 <script>
@@ -11,6 +15,7 @@ import HeaderBlock from "./components/HeaderBlock.vue";
 import BlockSeparator from "./components/BlockSeparator.vue";
 import SectionTemplate from "./components/SectionTemplate.vue";
 import SearchBlock from "./components/SearchBlock.vue";
+import ResultBlock from "./components/ResultBlock.vue";
 
 export default {
    data() {
@@ -23,6 +28,7 @@ export default {
       "block-separator": BlockSeparator,
       "section-template": SectionTemplate,
       "search-block": SearchBlock,
+      "result-block": ResultBlock,
    },
    methods: {
       changeTheme(theme) {
@@ -88,16 +94,26 @@ html {
 
 body {
    box-sizing: inherit;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   background-color: $color-background-1;
+   min-height: 100vh;
 }
 
 #app {
-   min-height: 100vh;
    background-color: $color-background-1;
    padding: 3rem 1.5rem;
-   @include responsive($screen-tablet-s) {
+   @include responsive($screen-mobile-l) {
+      padding: 3rem 2.25rem;
+   }
+   @include responsive($screen-tablet-m) {
       padding: 3rem;
    }
    @include responsive($screen-desktop-s) {
+      padding: 3rem 4.5rem;
+   }
+   @include responsive($screen-desktop-l) {
       padding: 3rem 6rem;
    }
 }
