@@ -55,7 +55,7 @@ export default {
    }
    &__button {
       display: block;
-      width: 2rem;
+      width: 1.75rem;
       height: 1rem;
       border-radius: 0.75rem;
       background-color: $color-body-1;
@@ -70,7 +70,7 @@ export default {
          left: 0.15rem;
       }
       &--light > div {
-         left: 1.15rem;
+         left: 0.875rem;
       }
    }
    &__circle {

@@ -1,9 +1,17 @@
 <template>
    <header-block v-on:change-theme="changeTheme"></header-block>
+   <block-separator></block-separator>
+   <section-template>
+      <network-options></network-options>
+   </section-template>
 </template>
 
 <script>
 import HeaderBlock from "./components/HeaderBlock.vue";
+import BlockSeparator from "./components/BlockSeparator.vue";
+import SectionTemplate from "./components/SectionTemplate.vue";
+import NetworkOptions from "./components/NetworkOptions.vue";
+
 export default {
    data() {
       return {
@@ -12,6 +20,9 @@ export default {
    },
    components: {
       "header-block": HeaderBlock,
+      "block-separator": BlockSeparator,
+      "section-template": SectionTemplate,
+      "network-options": NetworkOptions,
    },
    methods: {
       changeTheme(theme) {
@@ -84,10 +95,10 @@ body {
    background-color: $color-background-1;
    padding: 3rem 1.5rem;
    @include responsive($screen-tablet-s) {
-      padding: 4.5rem 3rem;
+      padding: 3rem;
    }
    @include responsive($screen-desktop-s) {
-      padding: 6rem 6rem;
+      padding: 3rem 6rem;
    }
 }
 </style>
