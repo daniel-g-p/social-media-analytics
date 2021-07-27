@@ -2,7 +2,7 @@
    <header-block v-on:change-theme="changeTheme"></header-block>
    <block-separator></block-separator>
    <section-template>
-      <network-options></network-options>
+      <search-block></search-block>
    </section-template>
 </template>
 
@@ -10,7 +10,7 @@
 import HeaderBlock from "./components/HeaderBlock.vue";
 import BlockSeparator from "./components/BlockSeparator.vue";
 import SectionTemplate from "./components/SectionTemplate.vue";
-import NetworkOptions from "./components/NetworkOptions.vue";
+import SearchBlock from "./components/SearchBlock.vue";
 
 export default {
    data() {
@@ -22,7 +22,7 @@ export default {
       "header-block": HeaderBlock,
       "block-separator": BlockSeparator,
       "section-template": SectionTemplate,
-      "network-options": NetworkOptions,
+      "search-block": SearchBlock,
    },
    methods: {
       changeTheme(theme) {
@@ -44,6 +44,7 @@ export default {
 
 <style lang="scss">
 @import "./styles/abstracts.scss";
+
 @font-face {
    font-family: "Bai Jamjuree";
    src: url("./fonts/bai-jamjuree-bold.woff2") format("woff2"),
@@ -73,7 +74,6 @@ export default {
    margin: 0;
    padding: 0;
    box-sizing: inherit;
-   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 button,

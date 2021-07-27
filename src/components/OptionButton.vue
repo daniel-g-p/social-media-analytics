@@ -7,7 +7,7 @@
          v-bind:id="name"
       />
       <div class="button__outline" v-bind:style="backgroundStyle"></div>
-      <label class="button__label" v-bind:for="name">
+      <label class="button__label" v-bind:for="name" v-on:click="selectNetwork">
          <div class="button__icon">
             <img v-bind:src="imageSource" class="button__icon" />
          </div>
@@ -19,6 +19,7 @@
 <script>
 export default {
    props: ["name", "background", "backgroundType"],
+   emits: ["select-network"],
    computed: {
       capitalizedName() {
          return this.name[0].toUpperCase() + this.name.slice(1);
@@ -32,6 +33,11 @@ export default {
          } else {
             return { backgroundImage: this.background };
          }
+      },
+   },
+   methods: {
+      selectNetwork() {
+         this.$emit("select-network", this.name);
       },
    },
 };
@@ -55,15 +61,17 @@ export default {
    &__label {
       background-color: $color-background-1;
       border-radius: 0.2em;
-      padding: 0.5em 0.75em;
+      padding: 0.5em 2.25em 0.5em 0.75em;
       display: flex;
       color: $color-body-1;
       position: relative;
       z-index: 2;
       cursor: pointer;
-      transition: padding-left 0.25s ease;
+      transition: padding 0.25s ease;
       &:hover {
-         padding-left: 1.25em;
+         @include responsive($screen-desktop-s) {
+            padding: 0.5em 1.75em 0.5em 1.25em;
+         }
       }
    }
    &__outline {

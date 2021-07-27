@@ -9,6 +9,7 @@
 import ThemeToggle from "./ThemeToggle.vue";
 
 export default {
+   emits: ["change-theme"],
    components: {
       "theme-toggle": ThemeToggle,
    },

@@ -13,6 +13,7 @@
 
 <script>
 export default {
+   emits: ["change-theme"],
    data() {
       return {
          isDark: true,

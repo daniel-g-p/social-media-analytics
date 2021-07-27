@@ -4,6 +4,7 @@
          v-for="network in networks"
          v-bind:key="network.name"
          v-bind="network"
+         v-on:select-network="selectNetwork"
       ></option-button>
    </div>
 </template>
@@ -57,6 +58,11 @@ export default {
             },
          ],
       };
+   },
+   methods: {
+      selectNetwork(network) {
+         this.$emit("select-network", network);
+      },
    },
 };
 </script>
