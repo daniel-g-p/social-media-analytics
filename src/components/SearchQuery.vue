@@ -8,7 +8,11 @@
          maxlength="50"
          v-model="username"
       />
-      <button class="search-form__button" v-bind:disabled="buttonEnabled">
+      <button
+         class="search-form__button"
+         v-bind:disabled="buttonEnabled"
+         v-on:click="startSearch"
+      >
          Find {{ username }} {{ networkText }}
       </button>
    </form>
@@ -24,10 +28,37 @@ export default {
    },
    computed: {
       networkText() {
-         return this.network ? `on ${this.network}` : "";
+         return this.network.name ? `on ${this.network.name}` : "";
       },
       buttonEnabled() {
          return !this.username || !this.network;
+      },
+      fields() {
+         switch (this.network.name) {
+            case "facebook":
+               return ["followers", "likes", "comments", "shares"];
+            case "instagram":
+               return ["followers", "likes", "comments", "mentions"];
+            case "twitter":
+               return ["followers", "likes", "comments", "retweets"];
+            case "youtube":
+               return ["subscribers", "likes", "comments", "views"];
+            case "tiktok":
+               return ["subscribers", "views", "likes", "duets"];
+            case "pinterest":
+               return ["followers", "pins", "comments", "shares"];
+            default:
+               return null;
+         }
+      },
+   },
+   methods: {
+      changeUsername() {
+         this.$emit("change-username", this.username);
+      },
+      startSearch() {
+         const data = {};
+         this.$emit("start-search", data);
       },
    },
 };

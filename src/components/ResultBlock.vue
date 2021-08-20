@@ -66,5 +66,14 @@ export default {
          gap: 0;
       }
    }
+   &__border {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0.5rem;
+      background-color: $color-body-1;
+   }
 }
 </style>

@@ -61,7 +61,8 @@ export default {
    },
    methods: {
       selectNetwork(network) {
-         this.$emit("select-network", network);
+         const input = this.networks.find((n) => n.name === network);
+         this.$emit("select-network", input);
       },
    },
 };

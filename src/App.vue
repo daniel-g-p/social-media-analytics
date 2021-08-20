@@ -21,7 +21,17 @@ export default {
    data() {
       return {
          themeVariables: document.documentElement.style,
+         network: "",
+         username: "",
+         data: null,
       };
+   },
+   computed: {
+      queryPlaceholder() {
+         return !this.network && !this.username
+            ? "your data"
+            : `${this.network} data for ${this.username}`;
+      },
    },
    components: {
       "header-block": HeaderBlock,

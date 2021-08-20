@@ -17,12 +17,12 @@ export default {
    },
    data() {
       return {
-         network: "",
+         network: {},
       };
    },
    methods: {
-      selectNetwork(network) {
-         this.network = network;
+      selectNetwork(input) {
+         this.network = input;
       },
    },
 };
